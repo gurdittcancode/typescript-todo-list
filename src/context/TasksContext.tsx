@@ -1,4 +1,4 @@
-import { ReactNode, createContext, useState } from 'react'
+import React, { ReactNode, createContext, useContext, useState } from 'react'
 
 export type TaskType = {
   id: string
@@ -8,13 +8,10 @@ export type TaskType = {
 
 export interface TasksContextType {
   tasks: TaskType[]
-  setTasks: (newTasks: TaskType[]) => void
+  setTasks: React.Dispatch<React.SetStateAction<TaskType[]>>
 }
 
-export const TasksContext = createContext<TasksContextType>({
-  tasks: [],
-  setTasks: (newTasks: TaskType[]) => {},
-})
+export const TasksContext = createContext<TasksContextType | null>(null)
 
 type TasksProviderProps = {
   children: ReactNode
@@ -27,4 +24,11 @@ export default function TasksContextProvider({ children }: TasksProviderProps) {
       {children}
     </TasksContext.Provider>
   )
+}
+
+export const useTasks = () => {
+  const context = useContext(TasksContext)
+  if (!context) throw new Error('Context can only be used within a provider!')
+
+  return context
 }

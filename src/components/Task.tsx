@@ -1,10 +1,9 @@
-import { useContext } from 'react'
-import { TaskType, TasksContext } from '../context/TasksContext'
+import { TaskType, useTasks } from '../context/TasksContext'
 
 import './Task.css'
 
 export const Task = ({ id, task, completed }: TaskType) => {
-  const { tasks, setTasks } = useContext(TasksContext)
+  const { tasks, setTasks } = useTasks()
 
   function handleClick() {
     const index = tasks.findIndex((task) => task.id === id)
