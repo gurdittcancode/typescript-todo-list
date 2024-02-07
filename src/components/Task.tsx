@@ -1,5 +1,4 @@
 import { TaskType, useTasks } from '../context/TasksContext'
-
 import './Task.css'
 
 export const Task = ({ id, task, completed }: TaskType) => {
