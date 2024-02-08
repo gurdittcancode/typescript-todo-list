@@ -1,4 +1,4 @@
-import React, { ReactNode, createContext, useContext, useState } from 'react'
+import React, { createContext, useContext } from 'react'
 
 export type TaskType = {
   id: string
@@ -6,25 +6,17 @@ export type TaskType = {
   completed: boolean
 }
 
-export interface TasksContextType {
+export type TasksContextType = {
   tasks: TaskType[]
   setTasks: React.Dispatch<React.SetStateAction<TaskType[]>>
 }
 
-export const TasksContext = createContext<TasksContextType | null>(null)
+export const TasksContext = createContext<TasksContextType>({
+  tasks: [],
+  setTasks: (newTasks: TaskType[]) => {}
+})
 
-type TasksProviderProps = {
-  children: ReactNode
-}
-
-export default function TasksContextProvider({ children }: TasksProviderProps) {
-  const [tasks, setTasks] = useState<TaskType[]>([])
-  return (
-    <TasksContext.Provider value={{ tasks, setTasks }}>
-      {children}
-    </TasksContext.Provider>
-  )
-}
+export const TasksContextProvider = TasksContext.Provider
 
 export const useTasks = () => {
   const context = useContext(TasksContext)

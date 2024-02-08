@@ -14,11 +14,11 @@ export const ThemeBtn = () => {
   }
 
   return (
-    <div onClick={handleClick}>
-      {currTheme.current === 'dark' ? (
-        <Moon color={theme === 'dark' ? '#fff' : '#000'} />
+    <div onClick={handleClick} className='hover:cursor-pointer'>
+      {currTheme.current === "dark" ? (
+        <Moon color={theme === "dark" ? "#fff" : "#000"} size={40} />
       ) : (
-        <Sun color={theme === 'dark' ? '#fff' : '#000'} />
+        <Sun color={theme === "dark" ? "#fff" : "#000"} size={40} />
       )}
     </div>
   )
