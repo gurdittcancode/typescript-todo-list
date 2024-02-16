@@ -6,7 +6,7 @@ type ThemeContextType = {
   lightMode: () => void
 }
 
-export const ThemeContext = createContext<ThemeContextType | null>(null)
+export const ThemeContext = createContext<ThemeContextType>({theme: '', darkMode: () => {}, lightMode: () => {}})
 export const ThemeContextProvider = ThemeContext.Provider
 
 export const useTheme = () => {

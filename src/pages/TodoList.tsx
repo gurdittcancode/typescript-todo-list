@@ -1,4 +1,3 @@
-import { useEffect } from 'react'
 import { AddTask } from '../components/AddTask'
 import { Tasks } from '../components/Tasks'
 import { ThemeBtn } from '../components/ThemeBtn'

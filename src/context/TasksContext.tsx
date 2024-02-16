@@ -1,4 +1,4 @@
-import React, { createContext, useContext } from 'react'
+import { createContext, useContext } from 'react'
 
 export type TaskType = {
   id: string
@@ -8,12 +8,12 @@ export type TaskType = {
 
 export type TasksContextType = {
   tasks: TaskType[]
-  setTasks: React.Dispatch<React.SetStateAction<TaskType[]>>
+  setTasks: (newTasks: TaskType[]) => void
 }
 
 export const TasksContext = createContext<TasksContextType>({
   tasks: [],
-  setTasks: (newTasks: TaskType[]) => {}
+  setTasks: () => {}
 })
 
 export const TasksContextProvider = TasksContext.Provider
